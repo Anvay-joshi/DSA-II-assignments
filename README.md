@@ -6,6 +6,7 @@
    
 ### Execute the code for assignment-1:
 ```
+    $ cd as-1
     $ make
     $ ./exe
 ```
