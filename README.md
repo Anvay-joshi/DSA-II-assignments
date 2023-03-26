@@ -1,16 +1,19 @@
 # DSA-II assignments repo :
 ### TODOs:
 - [ ] Add explainations for functions
-- [ ] Add assignments 2 and 3
-- [ ] Fix Memory leaks. -fsanitize=address annoys
+- [ ] Add assignments 3 and 4
+- [ ] Fix Memory leaks. -fsanitize=address gives errors 
    
 ### Execute the code for assignment-1:
 ```
-    $ cd as-1
-    $ make
-    $ ./exe
+    $ make clean
+    $ make ASS1
+    $ ./exe1
 ```
-### clean the .o files:
+   
+### Execute the code for assignment-2:
 ```
     $ make clean
+    $ make ASS2
+    $ ./exe2
 ```

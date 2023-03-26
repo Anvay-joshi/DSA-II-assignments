@@ -68,3 +68,66 @@ void levelOrderTraversal(node* root){
     }
 }
 
+node* build_BST(int sequence[], int size){
+    node* root = NULL;
+    for(int i = 0; i < size; i++){
+        insertNode_BST(&root, sequence[i]);
+    }
+    return root;
+}
+
+void insertNode_BST(node** root, int num){
+	if(*root == NULL){
+		*root = (init_node(num));	
+		return;
+	}	
+	else if(num < (*root)->data){
+		insertNode_BST(&(*root)->left, num); 
+	}
+	else if(num > (*root)->data){
+		insertNode_BST(&(*root)->right, num);
+	}
+	else if(num == (*root)->data){
+		return;
+	}
+}
+
+
+//TODO: function incomplete. finish writing it before using it  
+void deleteNode_BST(node** root, int key){
+    if(key == (*root)->data){
+        if((*root)->left == NULL && (*root)->right == NULL){
+            node* temp = *root;
+            *root = NULL;
+            free(temp);
+        } 
+        else if((*root)->left == NULL && (*root)->right != NULL){
+            node* temp = *root;
+            *root = (*root)->right;
+            free(temp);
+        }
+
+        else if((*root)->right == NULL && (*root)->left != NULL){
+            node* temp = *root;
+            *root = (*root)->left;
+            free(temp);
+        }
+        else{
+            node* temp = *root;
+            node* lg = (*root)->right;
+            while(lg->left != NULL){
+                lg= lg->left;
+            }
+            lg->left = (*root)->left;
+            *root = (*root)->right;
+            free(temp);
+        }
+    }
+    else if (key < (*root)->data){
+        deleteNode_BST(&(*root)->left, key);
+    }
+
+    else if (key > (*root)->data){
+        deleteNode_BST(&(*root)->right, key);
+    }
+}
